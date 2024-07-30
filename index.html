@@ -4,12 +4,26 @@
     <title>Book an Ola Cab</title>
     <script>
         function redirect() {
-            window.location.href = "ola://book?pickup_lat=19.044486760404933&pickup_lng=73.06218004565669&drop_lat=19.02546184001994&drop_lng=73.04971316247656";
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            
+            if (/android/i.test(userAgent)) {
+                // Redirect for Android
+                window.location.href = "intent://book?pickup_lat=19.044486760404933&pickup_lng=73.06218004565669&drop_lat=19.02546184001994&drop_lng=73.04971316247656
+#Intent;scheme=ola;package=com.olacabs.customer;end";
+            } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                // Redirect for iOS
+                window.location.href = "ola://book?pickup_lat=19.044486760404933&pickup_lng=73.06218004565669&drop_lat=19.02546184001994&drop_lng=73.04971316247656
+";
+            } else {
+                // Fallback for desktop or unsupported devices
+                alert('Please open this link on a mobile device with the Ola app installed.');
+            }
         }
         window.onload = redirect;
     </script>
 </head>
 <body>
-    <p>If you are not redirected, <a href="ola://book?pickup_lat=19.044486760404933&pickup_lng=73.06218004565669&drop_lat=19.02546184001994&drop_lng=73.04971316247656">click here</a>.</p>
+    <p>If you are not redirected, <a href="ola://book?pickup_lat=19.044486760404933&pickup_lng=73.06218004565669&drop_lat=19.02546184001994&drop_lng=73.04971316247656
+">click here</a>.</p>
 </body>
 </html>
