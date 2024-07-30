@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book an Ola Cab</title>
+    <script>
+        function redirect() {
+            window.location.href = "ola://book?pickup_lat=19.044486760404933&pickup_lng=73.06218004565669&drop_lat=19.02546184001994&drop_lng=73.04971316247656";
+                                    
+        }
+        window.onload = redirect;
+    </script>
+</head>
+<body>
+    <p>If you are not redirected, <a href="ola://book?pickup_lat=12.9716&pickup_lng=77.5946&drop_lat=13.0358&drop_lng=77.5970">click here</a>.</p>
+</body>
+</html>
